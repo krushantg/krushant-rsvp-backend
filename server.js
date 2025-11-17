@@ -10,11 +10,15 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
+  origin: 'https://krushant-rsvp-frontend.onrender.com',
+  credentials: true
+}));
+/*app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
     ? 'https://krushant-rsvp-frontend.azurewebsites.net' 
   : 'http://localhost:3000',
   credentials: true
-}));
+}));*/
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
