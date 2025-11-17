@@ -9,10 +9,22 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
+
+const allowedOrigins = process.env.NODE_ENV === 'production'
+  ? 'https://krushant-rsvp-frontend.onrender.com'
+  : 'http://localhost:3000';
+
 app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type']
+}));
+
+/*app.use(cors({
   origin: 'https://krushant-rsvp-frontend.onrender.com',
   credentials: true
-}));
+}));*/
 /*app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
     ? 'https://krushant-rsvp-frontend.azurewebsites.net' 
